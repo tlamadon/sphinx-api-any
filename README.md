@@ -35,3 +35,15 @@ very simple:
       # extract relevaant 
       H   = M.H; S=M.S; U=M.U; P0=M.P0; G= M.G; Z = M.Z; V = M.V; B = M.B; F=M.F; I0= M.I0; W0 = M.W0;
       kp  = 0.1;
+
+
+# Links
+
+ - [Sphinx markup language](http://sphinx-doc.org/domains.html#the-c-domain)
+ - [Sphinx tutorial](http://sphinx-doc.org/tutorial.html)
+
+# Todos
+
+ - allow to automatically include the raw code inside the documentation
+ - if some lines do match some regular expression, generate some sphinx rst directives
+ - get options from config file, pass them as argument

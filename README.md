@@ -12,11 +12,24 @@ start by creating a `doc` folder and initialize sphinx in it
 
 follow the instructions. Then use sphinx-api-any to generate your rst files from the code. For example:
 
-    sphinx-apy-any ../julia/ ./source/
+    sphinx-apy-any -s ../julia/ -o ./source/
 
 and finally generate the html output using sphinx
 
     make html
+
+Here is the full help given by calling `sphinx-api-any -h`: 
+
+    usage: sphinx-api-any [-h] [-s S] [-o O] [-e E] [-c C]
+
+    Extracts rst content from comments in all source files
+
+    optional arguments:
+      -h, --help  show this help message and exit
+      -s S        source folder
+      -o O        destination folder
+      -e E        source code extension, for example py or jl
+      -c C        comment selector, for example #'
 
 
 ## installation

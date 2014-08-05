@@ -6,8 +6,29 @@ from shutil import move
 from os import remove
 import re
 
-DOC_FOLDER = "./source/julia/"
+import argparse
+
+parser = argparse.ArgumentParser(
+  description ='Extracts rst content from comments in all source files',
+  epilog      ="that's all")
+
+parser.add_argument('-s',help='source folder')
+parser.add_argument('-o',help='destination folder')
+parser.add_argument('-e',help='source code extension, for example py or jl')
+parser.add_argument('-c',help="comment selector, for example #' ")
+
+args = parser.parse_args()
+
+DOC_FOLDER = "./source/"
 SRC_FOLDER = "../julia/"
+CMT_SELECT = "#'"
+
+if (args.o != None):
+  DOC_FOLDER = args.o
+if (args.s != None):
+  SRC_FOLDER = args.s
+if (args.c != None):
+  CMT_SELECT = args.c
 
 def extract(file_in, file_out, startstr):
   directory = os.path.dirname(file_out)
@@ -35,7 +56,7 @@ def extract(file_in, file_out, startstr):
 
 
 # for loop on all files
-filelist = glob.glob(SRC_FOLDER + "**/*.jl") + glob.glob(SRC_FOLDER + "/*.jl")
+filelist = glob.glob(SRC_FOLDER + "**/*." + args.e) + glob.glob(SRC_FOLDER + "/*." + args.e)
 
 for f in filelist:
   # create new file by replacing the extension

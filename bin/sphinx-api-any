@@ -62,7 +62,7 @@ def extract(file_in, file_out, startstr):
         else:
           beginp = True
           if not inCodeSection:
-            target_file.write("\n\n.. code-block:: ruby\n\n")
+            target_file.write("\n\n.. code-block:: julia\n\n")
             inCodeSection = True
           target_file.write("   " + line)  
 

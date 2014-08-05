@@ -34,6 +34,7 @@ if (args.s != None):
 if (args.c != None):
   CMT_SELECT = args.c
 
+# extracts the rst content from the code of the file
 def extract(file_in, file_out, startstr):
   directory = os.path.dirname(file_out)
   some_content = False
@@ -42,15 +43,28 @@ def extract(file_in, file_out, startstr):
   with open(file_out, 'w') as target_file:
     with open(file_in, 'r') as source_file:
       beginp = True
+      inCodeSection = False
+
       for line in source_file:
+
+        # here we want to remove the selector and
+        # append to the file
         if line.startswith(startstr):
+          inCodeSection = False
           some_content = True
           if beginp:
             target_file.write("\n")  
             beginp = False
           target_file.write(line.replace(startstr, ""))
+
+        # here we want to append as it is inside a
+        # code block
         else:
           beginp = True
+          if not inCodeSection:
+            target_file.write("\n\n.. code-block:: ruby\n\n")
+            inCodeSection = True
+          target_file.write("   " + line)  
 
   if some_content:
     print "done with " + file_in

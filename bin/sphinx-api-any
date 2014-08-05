@@ -23,7 +23,10 @@ args = parser.parse_args()
 DOC_FOLDER = "./source/"
 SRC_FOLDER = "../julia/"
 CMT_SELECT = "#'"
+FILE_EXT = "jl"
 
+if (args.e != None):
+  FILE_EXT = args.e
 if (args.o != None):
   DOC_FOLDER = args.o
 if (args.s != None):
@@ -57,7 +60,7 @@ def extract(file_in, file_out, startstr):
 
 
 # for loop on all files
-filelist = glob.glob(SRC_FOLDER + "**/*." + args.e) + glob.glob(SRC_FOLDER + "/*." + args.e)
+filelist = glob.glob(SRC_FOLDER + "**/*." + FILE_EXT) + glob.glob(SRC_FOLDER + "/*." + FILE_EXT)
 
 for f in filelist:
   # create new file by replacing the extension

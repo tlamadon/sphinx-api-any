@@ -49,13 +49,13 @@ def extract(file_in, file_out, startstr):
 
         # here we want to remove the selector and
         # append to the file
-        if line.startswith(startstr):
+        if line.strip().startswith(startstr):
           inCodeSection = False
           some_content = True
           if beginp:
             target_file.write("\n")  
             beginp = False
-          target_file.write(line.replace(startstr, ""))
+          target_file.write(line.lstrip().replace(startstr, ""))
 
         # here we want to append as it is inside a
         # code block

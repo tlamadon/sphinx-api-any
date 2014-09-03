@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(name='sphinx-api-any',
-      version='0.1',
+      version='0.2',
       description='extract comments from source files into rst files',
       url='https://github.com/tlamadon/sphinx-api-any',
       author='Thibaut Lamadon',
